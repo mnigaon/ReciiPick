@@ -17,7 +17,7 @@ const Toast = ({ message, type = 'success', onClose, duration = 3000 }) => {
     const isSuccess = type === 'success';
 
     return (
-        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-50 animate-bounce-in">
+        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-[9999] animate-bounce-in">
             <div className={`
                 flex items-center gap-3 px-6 py-4 rounded-2xl shadow-xl border-2
                 ${isSuccess
