@@ -237,6 +237,13 @@ For English users:
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} (Using FREE Gemini Model)`);
-});
+
+// Vercel Serverless Function Export
+export default app;
+
+// Local Development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT} (Using FREE Gemini Model)`);
+    });
+}
