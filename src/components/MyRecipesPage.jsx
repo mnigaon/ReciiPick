@@ -101,6 +101,7 @@ const MyRecipesPage = ({ savedRecipes, onBack, onDeleteRecipe }) => {
                 <RecipeModal
                     recipe={selectedRecipe}
                     onClose={() => setSelectedRecipe(null)}
+                    isSaved={true}
                 />
             )}
         </div>

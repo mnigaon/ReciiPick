@@ -5,6 +5,7 @@ import MyRecipesPage from './components/MyRecipesPage'
 import LoadingScreen from './components/LoadingScreen'
 import RecipeModal from './components/RecipeModal'
 import ErrorModal from './components/ErrorModal'
+import Toast from './components/Toast' // Import Toast
 import { generateRecipe } from './services/aiService'
 import { useAuth } from './context/AuthContext'
 import AuthModal from './components/AuthModal'
@@ -25,6 +26,13 @@ function App() {
     const [currentRecipe, setCurrentRecipe] = useState(null)
     const [showRecipeModal, setShowRecipeModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
+
+    // Toast State
+    const [toast, setToast] = useState({ message: null, type: 'success' });
+
+    const showToast = (message, type = 'success') => {
+        setToast({ message, type });
+    };
 
     // Load saved recipes from Firestore
     useEffect(() => {
@@ -61,7 +69,7 @@ function App() {
         );
 
         if (isDuplicate) {
-            alert('This recipe is already saved!');
+            showToast('This recipe is already saved! 💖', 'success'); // Use Toast
             return;
         }
 
@@ -83,18 +91,20 @@ function App() {
                 title: title,
                 createdAt: serverTimestamp()
             });
-            alert('Recipe saved to your collection! 💖');
+            showToast('Recipe saved to your collection! 💖', 'success'); // Use Toast
         } catch (error) {
             console.error('Error saving recipe:', error);
-            alert('Failed to save recipe. Error: ' + error.message);
+            showToast('Failed to save recipe. Please try again.', 'error');
         }
     };
 
     const handleDeleteRecipe = async (recipeId) => {
         try {
             await deleteDoc(doc(db, 'saved_recipes', recipeId));
+            showToast('Recipe deleted successfully.', 'success');
         } catch (error) {
             console.error('Error deleting recipe:', error);
+            showToast('Failed to delete recipe.', 'error');
         }
     };
 
@@ -157,7 +167,7 @@ function App() {
 
         } catch (error) {
             console.error("Failed to fetch AI response:", error);
-            alert("Sorry, I'm having trouble creating a recipe. 😅 Please try again!");
+            setErrorMessage("Sorry, I'm having trouble creating a recipe. 😅 Please try again!");
         } finally {
             setIsLoading(false)
         }
@@ -169,6 +179,13 @@ function App() {
 
     return (
         <div className="h-screen w-full overflow-hidden font-outfit relative">
+            {/* Toast Notification */}
+            <Toast
+                message={toast.message}
+                type={toast.type}
+                onClose={() => setToast({ ...toast, message: null })}
+            />
+
             <main className="w-full h-full flex flex-col items-center relative z-10">
                 {/* Header */}
                 <header className="w-full bg-amber-50/70 backdrop-blur-md relative border-b-2 border-amber-200/50">

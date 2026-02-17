@@ -1,7 +1,7 @@
 import React from 'react'
 import { X, Bookmark } from 'lucide-react'
 
-const RecipeModal = ({ recipe, onClose, user, onSave, onLoginRequired }) => {
+const RecipeModal = ({ recipe, onClose, user, onSave, onLoginRequired, isSaved = false }) => {
     if (!recipe) return null;
 
     return (
@@ -39,21 +39,23 @@ const RecipeModal = ({ recipe, onClose, user, onSave, onLoginRequired }) => {
                 </div>
 
                 {/* Action Footer - Fixed */}
-                <div className="text-center pb-8 px-8 pt-6 border-t-2 border-amber-200/30 flex-shrink-0 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
-                    <button
-                        onClick={() => {
-                            if (!user) {
-                                onLoginRequired();
-                            } else {
-                                onSave(recipe);
-                            }
-                        }}
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all font-bold text-lg"
-                    >
-                        <Bookmark className="w-6 h-6" />
-                        <span>Save Recipe</span>
-                    </button>
-                </div>
+                {!isSaved && (
+                    <div className="text-center pb-8 px-8 pt-6 border-t-2 border-amber-200/30 flex-shrink-0 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50">
+                        <button
+                            onClick={() => {
+                                if (!user) {
+                                    onLoginRequired();
+                                } else {
+                                    onSave(recipe);
+                                }
+                            }}
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all font-bold text-lg"
+                        >
+                            <Bookmark className="w-6 h-6" />
+                            <span>Save Recipe</span>
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     )
