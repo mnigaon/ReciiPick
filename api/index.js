@@ -170,7 +170,7 @@ For English users:
             } catch (error) {
                 const errorMsg = `⚠️ Failed with model ${modelName}: ${error.message}\n`;
                 console.warn(errorMsg);
-                fs.appendFileSync('server_debug.log', `${new Date().toISOString()} - ${errorMsg}`);
+                // fs.appendFileSync('server_debug.log', ...); // Disabled for Vercel
                 modelError = error;
                 // Continue to next model
             }
@@ -178,7 +178,7 @@ For English users:
 
         if (!result) {
             const finalError = `All models failed. Last error: ${modelError?.message}`;
-            fs.appendFileSync('server_debug.log', `${new Date().toISOString()} - ❌ ${finalError}\n`);
+            console.error(finalError);
             throw new Error(finalError);
         }
 
