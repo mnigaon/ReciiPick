@@ -8,7 +8,7 @@ const RecipeModal = ({ recipe, onClose, user, onSave, onLoginRequired, isSaved =
         <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-4 bg-black/40 backdrop-blur-sm" onClick={onClose}>
             {/* Modal Content - Menu Style */}
             <div
-                className="relative w-full max-w-3xl max-h-[95vh] sm:max-h-[90vh] bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 rounded-t-[32px] sm:rounded-[32px] border-4 border-white shadow-2xl flex flex-col"
+                className="relative w-full max-w-3xl max-h-[90dvh] sm:max-h-[85vh] bg-gradient-to-br from-amber-50 via-orange-50 to-amber-50 rounded-t-[32px] sm:rounded-[32px] border-4 border-white shadow-2xl flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Close Button */}

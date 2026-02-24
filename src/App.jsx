@@ -178,7 +178,7 @@ function App() {
     }
 
     return (
-        <div className="h-screen w-full overflow-hidden font-outfit relative">
+        <div className="h-full w-full overflow-y-auto font-outfit relative scroll-smooth">
             {/* Toast Notification */}
             <Toast
                 message={toast.message}
@@ -245,7 +245,7 @@ function App() {
                 {currentPage === 'home' ? (
                     <>
                         {/* Main Content */}
-                        <div className="w-full max-w-5xl mx-auto h-full flex flex-col flex-1 min-h-0 pt-8">
+                        <div className="w-full max-w-5xl mx-auto flex flex-col flex-1 min-h-0 pt-8">
                             {isLoading ? (
                                 /* Loading Screen */
                                 <LoadingScreen />
@@ -274,7 +274,7 @@ function App() {
 
                             {/* Fixed Bottom Input Section */}
                             {!isLoading && (
-                                <div className="w-full flex-none flex flex-col items-center px-3 sm:px-8 pb-4 sm:pb-8 pt-2">
+                                <div className="w-full flex-none flex flex-col items-center px-4 sm:px-8 pb-10 sm:pb-12 pt-4">
                                     <InputSection
                                         inputValue={inputValue}
                                         setInputValue={setInputValue}
