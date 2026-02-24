@@ -6,6 +6,9 @@ export default {
     ],
     theme: {
         extend: {
+            screens: {
+                'xs': '480px',
+            },
             fontFamily: {
                 fredoka: ['Fredoka', 'sans-serif'],
                 outfit: ['Outfit', 'sans-serif'],

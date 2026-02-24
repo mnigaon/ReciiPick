@@ -51,8 +51,8 @@ const AuthModal = ({ isOpen, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
-            <div className="bg-white rounded-[40px] shadow-2xl w-full max-w-md overflow-hidden relative animate-slideUp">
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:p-4 bg-black/50 backdrop-blur-sm animate-fadeIn">
+            <div className="bg-white rounded-t-[40px] sm:rounded-[40px] shadow-2xl w-full max-w-md overflow-hidden relative animate-slideUp">
                 <button
                     onClick={onClose}
                     className="absolute top-6 right-6 p-2 rounded-full hover:bg-orange-50 transition-colors"
@@ -60,12 +60,12 @@ const AuthModal = ({ isOpen, onClose }) => {
                     <X className="w-6 h-6 text-orange-950/40" />
                 </button>
 
-                <div className="p-8 pt-12">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl font-bold text-orange-950 mb-2">
+                <div className="p-6 sm:p-8 pt-10 sm:pt-12">
+                    <div className="text-center mb-5 sm:mb-8">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-orange-950 mb-2">
                             {isLogin ? 'Welcome Back!' : 'Join ReciiPick'}
                         </h2>
-                        <p className="text-orange-900/60">
+                        <p className="text-orange-900/60 text-sm sm:text-base">
                             {isLogin ? 'Sign in to save your favorite recipes' : 'Create an account to start your culinary journey'}
                         </p>
                     </div>

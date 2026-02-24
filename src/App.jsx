@@ -189,52 +189,51 @@ function App() {
             <main className="w-full h-full flex flex-col items-center relative z-10">
                 {/* Header */}
                 <header className="w-full bg-amber-50/70 backdrop-blur-md relative border-b-2 border-amber-200/50">
-                    <div className="w-full px-8 py-5 flex justify-between items-center">
-                        <div className="flex items-center gap-3 group">
+                    <div className="w-full px-4 sm:px-8 py-3 sm:py-5 flex justify-between items-center">
+                        <div className="flex items-center gap-2 sm:gap-3 group">
                             <img
                                 src="/reciipick.png"
                                 alt="ReciiPick Logo"
-                                className="w-14 h-14 object-contain transition-transform group-hover:rotate-12 group-hover:scale-110"
+                                className="w-9 h-9 sm:w-14 sm:h-14 object-contain transition-transform group-hover:rotate-12 group-hover:scale-110"
                             />
-                            <h1 className="text-5xl font-black bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(217,119,6,0.3)] hover:drop-shadow-[0_4px_12px_rgba(217,119,6,0.5)] transition-all hover:scale-105">
+                            <h1 className="text-3xl sm:text-5xl font-black bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(217,119,6,0.3)] hover:drop-shadow-[0_4px_12px_rgba(217,119,6,0.5)] transition-all hover:scale-105">
                                 Recii<span className="italic">Pick</span>
                             </h1>
                         </div>
 
-
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-2 sm:gap-4">
                             {user && (
                                 <button
                                     onClick={() => setCurrentPage('recipes')}
-                                    className="flex items-center gap-2.5 px-5 py-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-[20px] shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all border-2 border-amber-300/50 hover:border-amber-400 group"
+                                    className="flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-5 py-2 sm:py-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-[20px] shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all border-2 border-amber-300/50 hover:border-amber-400 group"
                                 >
-                                    <svg className="w-5 h-5 text-amber-700 group-hover:text-orange-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-amber-700 group-hover:text-orange-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                     </svg>
-                                    <span className="font-extrabold text-amber-900 text-sm tracking-wide">My Recipes</span>
-                                    <span className="bg-gradient-to-br from-amber-600 to-orange-600 text-white text-xs px-2.5 py-1 rounded-full font-bold shadow-md">{savedRecipes.length}</span>
+                                    <span className="font-extrabold text-amber-900 text-xs sm:text-sm tracking-wide hidden xs:block">My Recipes</span>
+                                    <span className="bg-gradient-to-br from-amber-600 to-orange-600 text-white text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full font-bold shadow-md">{savedRecipes.length}</span>
                                 </button>
                             )}
 
                             {user ? (
-                                <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2 sm:gap-3">
                                     <span className="text-orange-950 font-medium hidden md:block">
                                         {user.displayName || 'Chef'}
                                     </span>
                                     <button
                                         onClick={() => logout()}
-                                        className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-br from-amber-50 to-orange-50 text-amber-900 rounded-[18px] shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all border-2 border-amber-200 hover:border-amber-300 font-bold text-sm group"
+                                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-br from-amber-50 to-orange-50 text-amber-900 rounded-[18px] shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all border-2 border-amber-200 hover:border-amber-300 font-bold text-xs sm:text-sm group"
                                     >
                                         <LogOut className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                                        <span>Logout</span>
+                                        <span className="hidden sm:block">Logout</span>
                                     </button>
                                 </div>
                             ) : (
                                 <button
                                     onClick={() => setIsAuthModalOpen(true)}
-                                    className="flex items-center gap-2.5 px-6 py-3 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 text-white rounded-[20px] shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all font-black text-sm tracking-wide border-2 border-white/20 hover:border-white/40"
+                                    className="flex items-center gap-1.5 sm:gap-2.5 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 text-white rounded-[20px] shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all font-black text-xs sm:text-sm tracking-wide border-2 border-white/20 hover:border-white/40"
                                 >
-                                    <LogIn className="w-5 h-5 drop-shadow-md" />
+                                    <LogIn className="w-4 h-4 sm:w-5 sm:h-5 drop-shadow-md" />
                                     <span className="drop-shadow-md">Sign In</span>
                                 </button>
                             )}
@@ -252,19 +251,19 @@ function App() {
                                 <LoadingScreen />
                             ) : (
                                 /* Initial Screen - Chef + Welcome */
-                                <div className="w-full flex-1 flex items-center justify-center overflow-hidden px-8">
-                                    <div className="flex items-center gap-12 max-w-6xl">
-                                        {/* Chef Character - Left */}
+                                <div className="w-full flex-1 flex items-center justify-center overflow-hidden px-4 sm:px-8">
+                                    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-12 max-w-6xl w-full">
+                                        {/* Chef Character - Top on mobile, Left on desktop */}
                                         <div className="flex-shrink-0">
                                             <ChefCharacter isLoading={false} isSpeaking={false} />
                                         </div>
 
-                                        {/* Welcome Bubble - Right */}
-                                        <div className="flex-1 bg-gradient-to-br from-amber-100 to-orange-100 rounded-[32px] p-8 shadow-xl border-4 border-white">
-                                            <h2 className="text-3xl font-black bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 bg-clip-text text-transparent mb-4">
+                                        {/* Welcome Bubble - Bottom on mobile, Right on desktop */}
+                                        <div className="flex-1 w-full bg-gradient-to-br from-amber-100 to-orange-100 rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 shadow-xl border-4 border-white">
+                                            <h2 className="text-xl sm:text-3xl font-black bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 bg-clip-text text-transparent mb-2 sm:mb-4">
                                                 Welcome to Recii<span className="italic">Pick</span>! 👨‍🍳✨
                                             </h2>
-                                            <p className="text-amber-900 text-lg leading-relaxed">
+                                            <p className="text-amber-900 text-sm sm:text-lg leading-relaxed">
                                                 Tell me what ingredients you have, and I'll create a delicious recipe for you!
                                                 You can also send me a photo of your fridge. 📸
                                             </p>
@@ -275,7 +274,7 @@ function App() {
 
                             {/* Fixed Bottom Input Section */}
                             {!isLoading && (
-                                <div className="w-full flex-none flex flex-col items-center px-8 pb-8 pt-2">
+                                <div className="w-full flex-none flex flex-col items-center px-3 sm:px-8 pb-4 sm:pb-8 pt-2">
                                     <InputSection
                                         inputValue={inputValue}
                                         setInputValue={setInputValue}

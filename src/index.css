@@ -30,14 +30,18 @@
 
 #root {
   width: 100%;
-  height: 100vh;
+  height: 100dvh; /* dvh: 모바일 주소창 고려한 뷰포트 */
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
+  /* 모바일 터치 탭 하이라이트 제거 */
+  -webkit-tap-highlight-color: transparent;
+  /* iOS 스크롤 바운스 방지 */
+  overscroll-behavior: none;
 }
 
 @layer base {
@@ -47,5 +51,28 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+
+  /* 모바일에서 background-attachment: fixed 이슈 해결 */
+  @media (max-width: 768px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
+
+  /* 모바일 입력창 자동 확대 방지 */
+  input, textarea, select {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input, textarea, select {
+      font-size: inherit;
+    }
+  }
+
+  /* 버튼 터치 영역 최적화 */
+  button {
+    touch-action: manipulation;
   }
 }
